@@ -14,11 +14,14 @@ public class UsoEmpleado {
        muestraEmpleado(empleado2);
         */
 
-        Empleado[] misEmpleados = new Empleado[3];
+        Jefatura jefe_RRHH = new Jefatura("Alberto", 105000,2010, 01, 05);
+        jefe_RRHH.setIncentivo(2000);
+
+        Empleado[] misEmpleados = new Empleado[4];
         misEmpleados[0] = new Empleado("Paco Gomez",85000,1990,12,17);
         misEmpleados[1] = new Empleado("Ana Lopez",95000,1995,6,2);
         misEmpleados[2] = new Empleado("Maria Martin",105000,2000,8,10);
-
+        misEmpleados[3] = jefe_RRHH; // Polimorfismo - Principio de sustitucion : se puede usar un opbjeto de la subclase siempre que el programa espere un objeto de la superclase
         /*
         for (int i = 0; i <3 ; i++){
             misEmpleados[i].subeSueldo(5);
