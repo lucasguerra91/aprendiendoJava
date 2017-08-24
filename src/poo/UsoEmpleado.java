@@ -16,7 +16,6 @@ public class UsoEmpleado {
        Jefatura jefe_rrhh = new Jefatura("Alberto Elcho", 75000,2010,1,12);
        jefe_rrhh.setIncentivo(5000);
 
-<<<<<<< HEAD
         Jefatura jefe_RRHH = new Jefatura("Alberto", 105000,2010, 01, 05);
         jefe_RRHH.setIncentivo(2000);
 
@@ -25,12 +24,6 @@ public class UsoEmpleado {
         misEmpleados[1] = new Empleado("Ana Lopez",95000,1995,6,2);
         misEmpleados[2] = new Empleado("Maria Martin",105000,2000,8,10);
         misEmpleados[3] = jefe_RRHH; // Polimorfismo - Principio de sustitucion : se puede usar un opbjeto de la subclase siempre que el programa espere un objeto de la superclase
-=======
-        Empleado[] misEmpleados = new Empleado[5];
-        misEmpleados[0] = new Empleado("Paco Gomez",85000,1990,12,17);
-        misEmpleados[1] = new Empleado("Ana Lopez",95000,1995,6,2);
-        misEmpleados[2] = new Empleado("Maria Martin",105000,2000,8,10);
-        misEmpleados[3] = jefe_rrhh;
         misEmpleados[4] = new Jefatura("Maria", 95000, 1999 ,12 , 1 );
 
         //Casting
@@ -42,7 +35,6 @@ public class UsoEmpleado {
 
         // System.out.println(misEmpleados[3].getAltaContrato());  Se puede acceder a los metodos desde la instancia
 
->>>>>>> 6d22ae98efd8516066128fbf014f3ebf4bd39b5a
         /*
         for (int i = 0; i <3 ; i++){
             misEmpleados[i].subeSueldo(5);
@@ -78,73 +70,74 @@ public class UsoEmpleado {
 // CLASE EMPLEADO
     class Empleado{
 
-                // Constructor de la clase
-                public Empleado(String nom, double sue, int y,  int m, int d ){
-                    nombre = nom;
-                    sueldo = sue;
-                    GregorianCalendar calendario = new GregorianCalendar(y,m-1,d);
-                    altaContrato = calendario.getTime();
-                }
+        // Constructor de la clase
+        public Empleado(String nom, double sue, int y,  int m, int d ){
+            nombre = nom;
+            sueldo = sue;
+            GregorianCalendar calendario = new GregorianCalendar(y,m-1,d);
+            altaContrato = calendario.getTime();
+        }
 
-                // GETTERS
+        // GETTERS
 
-                public String getNombre(){
-                    return nombre;
-                }
-
-                public double getSueldo(){
-                    return sueldo;
-                }
-
-                public Date getAltaContrato(){
-                    return altaContrato;
-                }
-
-                //SETTERS
-
-                public void setNombre(String nombre) {
-                    this.nombre = nombre;
-                }
-
-                public void setSueldo(double sueldo) {
-                    this.sueldo = sueldo;
-                }
-
-                public void setAltaContrato(Date altaContrato) {
-                    this.altaContrato = altaContrato;
-                }
-
-                // Aumento de sueldo
-                public void subeSueldo(double porcentaje){
-                    double aumento = sueldo*porcentaje/100;
-                    sueldo+= aumento;
-                }
+        public String getNombre(){
+            return nombre;
+        }
 
 
-                // Campos de clase
-                private String nombre;
-                private double sueldo;
-                private Date altaContrato;
+        public double getSueldo(){
+            return sueldo;
+        }
+
+        public  Date getAltaContrato(){
+            return altaContrato;
+        }
+
+        //SETTERS
+
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public void setSueldo(double sueldo) {
+            this.sueldo = sueldo;
+        }
+
+        public void setAltaContrato(Date altaContrato) {
+            this.altaContrato = altaContrato;
+        }
+
+        // Aumento de sueldo
+        public void subeSueldo(double porcentaje){
+            double aumento = sueldo*porcentaje/100;
+            sueldo+= aumento;
+        }
+
+
+        // Campos de clase
+        private String nombre;
+        private double sueldo;
+        private Date altaContrato;
 
     }
 
     // SubClase Jefatura que se extiende de la superclase Empleado
     class Jefatura extends Empleado{
 
-                public Jefatura(String nom, double sue, int y , int m , int d){
-                    super(nom,sue,y,m,d);
-                }
+        public Jefatura(String nom, double sue, int y , int m , int d){
+            super(nom,sue,y,m,d);
+        }
 
-                public void setIncentivo(double b){
-                    incentivo = b;
-                }
+         public void setIncentivo(double b){
+            incentivo = b;
+         }
 
-                public double getSueldo(){
-                    double sueldoJefe = super.getSueldo();
-                    return sueldoJefe + incentivo;
-                }
+        public double getSueldo(){
+            double sueldoJefe = super.getSueldo();
+            return sueldoJefe + incentivo;
+        }
 
-
-                // Campos de clase siempre al final o al inicio de una clase
-                private double incentivo;
+        // Campos de clase siempre al final o al inicio de una clase
+        private double incentivo;
     }
+
