@@ -54,7 +54,7 @@ public class UsoEmpleado {
     }
 
     public static void muestraEmpleado(Empleado x){
-        System.out.println("\n\t\tDatos del empleado");
+        System.out.println("\n\t\tDatos del empleado");ui8opopopopopopopopopopopopopopopopopopopopopopopopopopop
         System.out.println("Nombre: "+ x.getNombre());
         System.out.println("Sueldo: "+ x.getSueldo());
         System.out.println("Contratacion: "+ x.getAltaContrato());
