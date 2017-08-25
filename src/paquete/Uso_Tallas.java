@@ -32,6 +32,12 @@ public class Uso_Tallas {
         String entrada_datos = entrada.next().toUpperCase();
 
 
+        // Con valueof, recuperamos el valor al que corresponde lo que el usuario ingreso
+        Talla la_talla = Enum.valueOf(Talla.class, entrada_datos);
+
+
+        System.out.println("Talla: " + la_talla);
+        System.out.println("Abreviatura: " + la_talla.getAbreviatura());
 
         /*
         Talla s = Talla.PEQUEÑO;

@@ -19,7 +19,7 @@ public class UsoEmpleado {
         Jefatura jefe_RRHH = new Jefatura("Alberto", 105000,2010, 01, 05);
         jefe_RRHH.setIncentivo(2000);
 
-        Empleado[] misEmpleados = new Empleado[4];
+        Empleado[] misEmpleados = new Empleado[5];
         misEmpleados[0] = new Empleado("Paco Gomez",85000,1990,12,17);
         misEmpleados[1] = new Empleado("Ana Lopez",95000,1995,6,2);
         misEmpleados[2] = new Empleado("Maria Martin",105000,2000,8,10);
