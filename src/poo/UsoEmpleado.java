@@ -27,7 +27,7 @@ public class UsoEmpleado {
         // misEmpleados[4] no permite acceder a setIncentivo
         Jefatura jefaFinanzas = (Jefatura) misEmpleados[4];
         jefaFinanzas.setIncentivo(5000); // En cambio, al hacer un casting, si podemos acceder a los metodos de la clase Jefatura
-
+        // Al intentar hacer un casting de un empleado a jefatura, nos va a dar error porque no esta dentro de la herencia "Todo jefe es empleado pero no todo empleado siempre es jefe"
 
 
         // System.out.println(misEmpleados[3].getAltaContrato());  Se puede acceder a los metodos desde la instancia
