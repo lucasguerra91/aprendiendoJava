@@ -1,5 +1,6 @@
 package poo;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 // USO DE EMPLEADO CON METODO MAIN
@@ -43,6 +44,8 @@ public class UsoEmpleado {
             e.subeSueldo(5);
         }
 
+        Arrays.sort(misEmpleados);
+
         for (Empleado e: misEmpleados){
             System.out.println("\n\nNombre: " + e.getNombre() + "\nSueldo: "+ e.getSueldo()+ "\nFecha de alta: "+ e.getAltaContrato());
         }
@@ -63,7 +66,7 @@ public class UsoEmpleado {
 
 
 // CLASE EMPLEADO
-    class Empleado{
+    class Empleado implements Comparable{
 
         // Constructor de la clase
         public Empleado(String nom, double sue, int y,  int m, int d ){
@@ -107,6 +110,16 @@ public class UsoEmpleado {
             double aumento = sueldo*porcentaje/100;
             sueldo+= aumento;
         }
+
+
+        // Sobreescritura del metodo compareTo para que funcione el implement
+        public int compareTo(Object miObjeto){
+            Empleado otroEmpleado = (Empleado) miObjeto; // Es necesario hacer el casting para comparar
+            if(this.sueldo < otroEmpleado.sueldo){return -1;}
+            if (this.sueldo > otroEmpleado.sueldo){return 1;}
+            return 0;
+        }
+        
 
 
         // Campos de clase
