@@ -5,14 +5,7 @@ import java.util.*;
 // USO DE EMPLEADO CON METODO MAIN
 public class UsoEmpleado {
     public static void main (String[] args){
-       /*
-       Empleado empleado1 = new Empleado("Roberto Acuña",18000,2016,10,25);
-       Empleado empleado2 = new Empleado("Maria Petea",18000,2017,1,2);
-       empleado1.subeSueldo(10);
-       empleado2.subeSueldo(5);
-       muestraEmpleado(empleado1);
-       muestraEmpleado(empleado2);
-        */
+
        Jefatura jefe_rrhh = new Jefatura("Alberto Elcho", 75000,2010,1,12);
        jefe_rrhh.setIncentivo(5000);
 
@@ -65,6 +58,8 @@ public class UsoEmpleado {
 
 
 }
+
+
 
 
 // CLASE EMPLEADO
@@ -120,6 +115,11 @@ public class UsoEmpleado {
         private Date altaContrato;
 
     }
+
+
+
+
+
 
     // SubClase Jefatura que se extiende de la superclase Empleado
     class Jefatura extends Empleado{
