@@ -7,9 +7,7 @@ import java.util.*;
 public class UsoEmpleado {
     public static void main (String[] args){
 
-       Jefatura jefe_rrhh = new Jefatura("Alberto Elcho", 75000,2010,1,12);
-       jefe_rrhh.setIncentivo(5000);
-
+        // Creando objetos
         Jefatura jefe_RRHH = new Jefatura("Alberto", 105000,2010, 01, 05);
         jefe_RRHH.setIncentivo(2000);
 
@@ -24,11 +22,32 @@ public class UsoEmpleado {
         // misEmpleados[4] no permite acceder a setIncentivo
         Jefatura jefaFinanzas = (Jefatura) misEmpleados[4];
         jefaFinanzas.setIncentivo(5000); // En cambio, al hacer un casting, si podemos acceder a los metodos de la clase Jefatura
-        // Al intentar hacer un casting de un empleado a jefatura, nos va a dar error porque no esta dentro de la herencia "Todo jefe es empleado pero no todo empleado siempre es jefe"
+        // Al intentar hacer un casting de un empleado a jefatura, nos va a dar error porque no esta dentro de la herencia "To_do jefe es empleado pero no to_do empleado siempre es jefe"
 
+
+        // Ejemplos de instanciamiento y uso de instanceof
+
+        Empleado director_comercial = new Jefatura("Sandra", 85000, 2012,05,05);
+        Comparable ejemplo = new Empleado("Roberto", 25000, 2015 , 06 , 06);
+
+        if (director_comercial instanceof Empleado){
+            System.out.println("Es de tipo jefatura");
+        }
+
+        if (ejemplo instanceof Comparable){
+            System.out.println("Implementa la interfaz comparable");
+        }
+
+        // Implementacion de metodo tomar_decisiones de la interface Jefes
+        System.out.println(jefaFinanzas.tomar_decisiones("Tomarse vacaciones"));
+
+        System.out.println("\nEl/la jefe  " + jefaFinanzas.getNombre() + "  tiene un bono de " +
+                jefaFinanzas.establece_bono(5000) + " AR$");
+
+        System.out.println("\nEl empleado  " + misEmpleados[2].getNombre() + "  tiene un bono de " +
+                misEmpleados[2].establece_bono(500) + " AR$");
 
         // System.out.println(misEmpleados[3].getAltaContrato());  Se puede acceder a los metodos desde la instancia
-
         /*
         for (int i = 0; i <3 ; i++){
             misEmpleados[i].subeSueldo(5);
@@ -44,6 +63,7 @@ public class UsoEmpleado {
             e.subeSueldo(5);
         }
 
+        // Implementando interface Comparable para ordenar los empleados
         Arrays.sort(misEmpleados);
 
         for (Empleado e: misEmpleados){
@@ -65,8 +85,9 @@ public class UsoEmpleado {
 
 
 
-// CLASE EMPLEADO
-    class Empleado implements Comparable{
+//  ------------------------------   CLASE EMPLEADO ------------------------------------
+
+    class Empleado implements Comparable, Trabajadores{
 
         // Constructor de la clase
         public Empleado(String nom, double sue, int y,  int m, int d ){
@@ -77,30 +98,21 @@ public class UsoEmpleado {
         }
 
         // GETTERS
-
-        public String getNombre(){
-            return nombre;
-        }
-
-
+        public String getNombre(){return nombre;}
         public double getSueldo(){
             return sueldo;
         }
-
         public  Date getAltaContrato(){
             return altaContrato;
         }
 
         //SETTERS
-
         public void setNombre(String nombre) {
             this.nombre = nombre;
         }
-
         public void setSueldo(double sueldo) {
             this.sueldo = sueldo;
         }
-
         public void setAltaContrato(Date altaContrato) {
             this.altaContrato = altaContrato;
         }
@@ -111,17 +123,21 @@ public class UsoEmpleado {
             sueldo+= aumento;
         }
 
-
-        // Sobreescritura del metodo compareTo para que funcione el implement
+        // Sobreescritura del metodo compareTo para que funcione el implement  Comparable
         public int compareTo(Object miObjeto){
             Empleado otroEmpleado = (Empleado) miObjeto; // Es necesario hacer el casting para comparar
             if(this.sueldo < otroEmpleado.sueldo){return -1;}
             if (this.sueldo > otroEmpleado.sueldo){return 1;}
             return 0;
         }
+
+        // Sobreescritura del metodo establece bono de la interface Trabajadores
+        @Override
+        public double establece_bono (double bono){
+            return Trabajadores.bono_base + bono;
+        }
+
         
-
-
         // Campos de clase
         private String nombre;
         private double sueldo;
@@ -131,20 +147,33 @@ public class UsoEmpleado {
 
 
 
+    // ---------------------------- SubClase Jefatura que se extiende de la superclase Empleado -----------------
+    class Jefatura extends Empleado implements Jefes{
 
-
-
-    // SubClase Jefatura que se extiende de la superclase Empleado
-    class Jefatura extends Empleado{
-
+        // Constructor
         public Jefatura(String nom, double sue, int y , int m , int d){
             super(nom,sue,y,m,d);
         }
 
-         public void setIncentivo(double b){
+        // Implementamos el metodo declarado en la interfaz
+        @Override
+        public String tomar_decisiones(String decision) {
+            return "Un miembro de la direccion ha tomado la direccion de : " + decision;
+        }
+
+        // Metodo establece_bono de la interface
+        @Override
+        public double establece_bono(double bono) {
+            double prima = 2000;
+            return Trabajadores.bono_base + bono + prima;
+        }
+
+        // Metodo establece incentivo
+        public void setIncentivo(double b){
             incentivo = b;
          }
 
+        // GETTERS
         public double getSueldo(){
             double sueldoJefe = super.getSueldo();
             return sueldoJefe + incentivo;
