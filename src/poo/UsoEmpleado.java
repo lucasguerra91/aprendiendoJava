@@ -71,7 +71,7 @@ public class UsoEmpleado {
 
 
 // CLASE EMPLEADO
-    class Empleado implements Comparable{
+    class Empleado implements Comparable, Trabajadores{
 
         // Constructor de la clase
         public Empleado(String nom, double sue, int y,  int m, int d ){
@@ -125,7 +125,12 @@ public class UsoEmpleado {
             return 0;
         }
         
+        public double establece_bono (double bono){
+            double prima = 2000;
+            return Trabajadores.bono_base + prima + bono ;
 
+
+        }
 
         // Campos de clase
         private String nombre;
