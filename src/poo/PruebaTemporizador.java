@@ -1,6 +1,7 @@
 package poo;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.Date;
 
@@ -20,5 +21,6 @@ public class PruebaTemporizador {
         public void actionPerformed(ActionEvent e){
             Date now = new Date();
             System.out.println("Te pongo la hora cada 5 segundos: " + now);
+            Toolkit.getDefaultToolkit().beep();
         }
     }
