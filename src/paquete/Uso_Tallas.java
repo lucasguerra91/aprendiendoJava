@@ -45,7 +45,7 @@ public class Uso_Tallas {
         Talla g = Talla.GRANDE;
         Talla xl = Talla.MUY_GRANDE;
             Se podrian definir las tallas de esta manera
-        String talla;
+        String talla; 
         talla = "Pequeña";
         talla = "Mediana";
         talla = "Grande";
