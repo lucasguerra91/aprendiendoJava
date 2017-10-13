@@ -7,8 +7,6 @@ public class crandoMarcos {
     public static void main(String[] args){
         // Instanciamos nuestra ventana
         miMarco marco1 = new miMarco();
-
-
     }
 }
 
@@ -25,6 +23,5 @@ class miMarco extends JFrame{
         //setResizable(false);
         setExtendedState(Frame.MAXIMIZED_BOTH); // tambien podemos poner 6 que es el valor de la constante
     }
-
 
 }
